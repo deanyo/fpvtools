@@ -1,0 +1,232 @@
+:root {
+  --bg-0: #14111b;
+  --bg-1: #1a1621;
+  --bg-2: #231f32;
+  --bg-3: #2a2540;
+  --ink: #eee9fc;
+  --muted: #a096b8;
+  --line: #3f3951;
+  --accent: #b3f4f3;
+  --accent-2: #e192ef;
+  --accent-3: #b1f2a7;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: 24px;
+  color: var(--ink);
+  font-family: "JetBrains Mono", "SF Mono", Consolas, monospace;
+  background:
+    radial-gradient(1200px 700px at 0% -10%, rgba(134, 199, 255, 0.12), transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(225, 146, 239, 0.12), transparent 58%),
+    linear-gradient(160deg, var(--bg-0), var(--bg-1) 40%, var(--bg-0));
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(transparent 95%, rgba(255, 255, 255, 0.03)),
+    linear-gradient(90deg, transparent 95%, rgba(255, 255, 255, 0.02));
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 32px 0 28px;
+}
+
+.eyebrow {
+  color: var(--accent-3);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  margin-bottom: 14px;
+}
+
+.hero h1,
+.feature-card h2,
+.notes-card h2 {
+  font-family: "Space Grotesk", sans-serif;
+  text-transform: lowercase;
+}
+
+.hero h1 {
+  max-width: 11ch;
+  color: var(--accent);
+  font-size: clamp(42px, 7vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  margin-bottom: 16px;
+}
+
+.intro {
+  max-width: 58ch;
+  color: #d3ccdf;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-2);
+  box-shadow: 0 12px 30px var(--shadow);
+  padding: 22px;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 320px;
+}
+
+.live-card {
+  background:
+    radial-gradient(420px 220px at 100% 0%, rgba(134, 199, 255, 0.08), transparent 70%),
+    var(--bg-2);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  text-transform: lowercase;
+}
+
+.status.live {
+  color: var(--accent-3);
+  background: rgba(177, 242, 167, 0.08);
+}
+
+.status.soon {
+  color: var(--accent-2);
+  background: rgba(225, 146, 239, 0.08);
+}
+
+.feature-card h2,
+.notes-card h2 {
+  color: var(--accent);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.feature-card p,
+.notes-card p,
+.feature-list {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.feature-list {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.feature-list li::before {
+  content: "· ";
+  color: var(--accent-2);
+}
+
+.action-row {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary-btn,
+.ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+.primary-btn {
+  background: var(--accent);
+  color: var(--bg-1);
+}
+
+.ghost-btn {
+  background: transparent;
+  color: var(--muted);
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+a {
+  color: inherit;
+}
+
+.notes-card a:hover,
+.ghost-btn:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .main-grid,
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .action-row > a {
+    width: 100%;
+  }
+}
